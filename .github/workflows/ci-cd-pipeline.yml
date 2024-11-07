@@ -32,3 +32,7 @@ jobs:
             - name: Tag Docker Image
               if: success()  
               run: docker tag ping-monitor ${{ secrets.DOCKER_USERNAME }}/ping-monitor:latest
+            
+            - name: Push Docker Image to Docker Hub
+              if: success()
+              run: docker push ${{ secrets.DOCKER_USERNAME }}/ping-monitor:latest
