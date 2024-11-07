@@ -28,3 +28,7 @@ jobs:
                 DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
                 DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
               run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+            - name: Tag Docker Image
+              if: success()  
+              run: docker tag ping-monitor ${{ secrets.DOCKER_USERNAME }}/ping-monitor:latest
