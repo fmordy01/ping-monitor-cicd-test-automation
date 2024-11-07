@@ -21,3 +21,10 @@ jobs:
             - name: Run Test in Docker
               if: success()
               run: docker run ping-monitor pytest test_ping_service.py
+            
+            - name: Log in to Docker Hub
+              if: success()  # Ensures this runs only if previous steps succeed
+              env:
+                DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+                DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+              run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
