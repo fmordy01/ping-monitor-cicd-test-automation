@@ -14,9 +14,15 @@ jobs:
         steps:
             - name: Check out code
               uses: actions/checkout@v2
+
+            - name: Install Black formatting tool
+              run: pip install black
             
-    
+            - name: Run Black Formatting Check
+              run: black --check .
+            
             - name: Set up Docker Build
+              if: success()
               run: docker build -t ping-monitor .
             
             - name: Run Test in Docker
