@@ -17,3 +17,13 @@ jobs:
 
             - name: Set up Docker Build
               run: docker build -t ping-monitor .
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v2
+
+            - name: Run Test in Docker
+              run: docker run ping-monitor pytest test_ping_service.py
