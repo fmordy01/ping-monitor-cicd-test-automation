@@ -19,4 +19,5 @@ jobs:
               run: docker build -t ping-monitor .
             
             - name: Run Test in Docker
+              if: success()
               run: docker run ping-monitor pytest test_ping_service.py
