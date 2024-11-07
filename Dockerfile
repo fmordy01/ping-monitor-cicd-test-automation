@@ -4,9 +4,6 @@ WORKDIR /app
 
 COPY . /app
 
+
+#install dependencies
 RUN pip install -r requirements.txt
-
-CMD ["python", "ping_service.py"]
-
-
-
