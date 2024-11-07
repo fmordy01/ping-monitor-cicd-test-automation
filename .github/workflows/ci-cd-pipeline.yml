@@ -9,12 +9,13 @@ on:
             - main
 
 jobs:
-    build-and-test:
+    build-and-test-push:
         runs-on: ubuntu-latest
         steps:
             - name: Check out code
               uses: actions/checkout@v2
-
+            
+    
             - name: Set up Docker Build
               run: docker build -t ping-monitor .
             

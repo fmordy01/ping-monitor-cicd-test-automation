@@ -1,4 +1,7 @@
+import logging
 from ping_service import ping_host
+
+logging.basicConfig(level=logging.INFO)
 
 def test_ping_host_up_one():
     assert ping_host("https://www.google.com") == True #expected output: up
