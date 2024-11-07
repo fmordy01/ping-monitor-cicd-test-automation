@@ -21,7 +21,7 @@ jobs:
             
             - name: Run Test in Docker
               if: success()
-              run: docker run ping-monitor pytest test_ping_service.py
+              run: docker run ping-monitor pytest test_ping_service.py --log-cli-level=INFO
             
             - name: Log in to Docker Hub
               if: success()  # Ensures this runs only if previous steps succeed
